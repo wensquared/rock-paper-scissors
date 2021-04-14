@@ -7,6 +7,7 @@ function computerplay(){
 function onegame(playerSelection,computerSelection=computerplay()){
     playerSelection = playerSelection.toLowerCase();
     console.log("PC chose: " + computerSelection);
+    
     if(playerSelection == computerSelection){
         return "Draw";
     }
