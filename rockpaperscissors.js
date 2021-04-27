@@ -4,21 +4,30 @@ const pc_score = document.createElement('p');
 const player_symbol = document.createElement('p');
 const pc_symbol = document.createElement('p');
 
+rockbtn.style.backgroundColor = 'grey';
+paperbtn.style.backgroundColor = 'magenta';
+scissorsbtn.style.backgroundColor = 'blue';
+
 let pl_score = 0; //player score
 let p_score = 0; //pc score
 
 player_score.textContent = 'Player: ' + pl_score;
 pc_score.textContent = 'Computer: ' + p_score;
 
+let br1 = document.createElement('br');
+let br2 = document.createElement('br');
+
 box1.appendChild(player_score);
+box1.appendChild(br1);
 box5.appendChild(pc_score);
+box5.appendChild(br2);
 
 
 rockbtn.addEventListener('click', function(){
     let tmp = game('rock');
     update_score(tmp); 
 } );
-paperbtn.addEventListener('click', function(){let tmp = game('rock'); update_score(tmp);} );
+paperbtn.addEventListener('click', function(){let tmp = game('paper'); update_score(tmp);} );
 scissorsbtn.addEventListener('click', function(){let tmp = game('scissors'); update_score(tmp);} );
 
 
@@ -33,8 +42,8 @@ function game(playerSelection){  //0...pc win   1...player win    2....draw
     
     computerSelection = computerplay();
    
-    player_symbol.textContent = playerSelection;
-    pc_symbol.textContent = computerSelection;
+    player_symbol.textContent = 'You chose: ' + playerSelection;
+    pc_symbol.textContent = 'Computer chose: ' + computerSelection;
 
     box1.appendChild(player_symbol);
     box5.appendChild(pc_symbol);
@@ -73,15 +82,19 @@ function update_score(points){
 
 function check_winner(player_points,pc_points){
     if(player_points == 5 && pc_points < 5){
-        results.textContent = 'You win';
+        results.textContent = 'You win!!';
+        results.style.cssText = 'color: #009933; font-weight: bold; font-size: 24px;'
+        
         reset();
     }
     else if(player_points < 5 && pc_points == 5){
-        results.textContent = 'You lose';
+        results.textContent = 'You lose.';
+        results.style.cssText = 'color: #800000; font-weight: bold; font-size: 24px;'
         reset();
     }
     else if(player_points == 5 && pc_points == 5){
         results.textContent = 'Draw';
+        results.style.cssText = 'color: #663300; font-weight: bold; font-size: 24px;'
         reset();
     }
     else{
@@ -92,6 +105,7 @@ function check_winner(player_points,pc_points){
 function reset(){
     const resetbtn = document.createElement('button');
     resetbtn.textContent = 'Reset';
+    resetbtn.style.backgroundColor = '#3333cc';
     resetbtn.addEventListener('click',function(){
         pl_score = 0;
         p_score = 0;
