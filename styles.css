@@ -196,30 +196,16 @@ button:active {
   }
 
   #results {
-    /* padding-top: 15%; */
     padding-bottom: 10%;
     grid-area: noth;
   }
 }
 
 .box1 {
-  /* background-color: aliceblue; */
   text-align: center;
 }
 
-.box2 {
-  /* background-color: aqua; */
-}
-
-.box3 {
-  /* background-color: blueviolet; */
-}
-
-.box4 {
-  /* background-color: chocolate; */
-}
 .box5 {
-  /* background-color: cornflowerblue; */
   text-align: center;
 }
 
