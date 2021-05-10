@@ -4,10 +4,6 @@ const pc_score = document.createElement('p');
 const player_symbol = document.createElement('p');
 const pc_symbol = document.createElement('p');
 
-rockbtn.style.backgroundColor = 'grey';
-paperbtn.style.backgroundColor = 'magenta';
-scissorsbtn.style.backgroundColor = 'blue';
-
 let pl_score = 0; //player score
 let p_score = 0; //pc score
 
@@ -84,19 +80,30 @@ function check_winner(player_points,pc_points){
     if(player_points == 5 && pc_points < 5){
         results.textContent = 'You win!!';
         results.style.cssText = 'color: #009933; font-weight: bold; font-size: 24px;'
-        
+
+        rockbtn.disabled = true;
+        rockbtn.style.backgroundColor = 'grey';
+        paperbtn.disabled = true;
+        paperbtn.style.backgroundColor = 'grey';
+        scissorsbtn.disabled = true;
+        scissorsbtn.style.backgroundColor = 'grey';
+
         reset();
     }
     else if(player_points < 5 && pc_points == 5){
         results.textContent = 'You lose.';
         results.style.cssText = 'color: #800000; font-weight: bold; font-size: 24px;'
+
+        rockbtn.disabled = true;
+        rockbtn.style.backgroundColor = 'grey';
+        paperbtn.disabled = true;
+        paperbtn.style.backgroundColor = 'grey';
+        scissorsbtn.disabled = true;
+        scissorsbtn.style.backgroundColor = 'grey';
+        
         reset();
     }
-    else if(player_points == 5 && pc_points == 5){
-        results.textContent = 'Draw';
-        results.style.cssText = 'color: #663300; font-weight: bold; font-size: 24px;'
-        reset();
-    }
+
     else{
         return true;
     }
@@ -105,7 +112,7 @@ function check_winner(player_points,pc_points){
 function reset(){
     const resetbtn = document.createElement('button');
     resetbtn.textContent = 'Reset';
-    resetbtn.style.backgroundColor = '#3333cc';
+    resetbtn.style.backgroundColor = 'white';
     resetbtn.addEventListener('click',function(){
         pl_score = 0;
         p_score = 0;
@@ -113,8 +120,18 @@ function reset(){
         pc_score.textContent = 'Computer: ' + p_score;
         player_symbol.textContent = '';
         pc_symbol.textContent = '';
+
+        rockbtn.disabled = false;
+        rockbtn.style.backgroundColor = '';
+        paperbtn.disabled = false;
+        paperbtn.style.backgroundColor = '';
+        scissorsbtn.disabled = false;
+        scissorsbtn.style.backgroundColor = '';
+
         results.textContent = '';
         resetdiv.removeChild(resetbtn);
+
     })
+    
     resetdiv.appendChild(resetbtn);
 }
